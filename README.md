@@ -1,3 +1,3 @@
 # python_labs
 
-## README к лабам лежит в images/лаба
+## README к лабам лежит в images/labNum
