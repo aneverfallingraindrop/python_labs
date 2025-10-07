@@ -1,62 +1,101 @@
 # python_labs
 
-## Лабораторная работа 1
+## Лабораторная работа 2
 
-### Задание 1
+### Задание A
 ```python
-name = input('Имя: ')
-age = int(input('Возраст: '))
+def min_max(nums: list[float | int]) -> tuple[float | int, float | int]:
+    if len(nums) == 0:
+        raise ValueError
+    return(min(nums), max(nums))
 
-print(f'Привет, {name}! Через год тебе будет {age +1}.')
+def unique_sorted(nums: list[float | int]) -> list[float | int]:
+    return(list(sorted(set(nums))))
+
+def flatten(mat: list[list | tuple]) -> list:
+    res = []
+    for i in mat:
+        if type(i) in (list, tuple):
+            for j in i:
+                res.append(j)
+        else:
+            raise TypeError
+    return(res)
 ```
-![Картинка 1](./ex01.png)
+![Картинка 1](./arrays.png)
 
-### Задание 2
+### Задание B
 ```python
-a = float(input('A: ').replace(',', '.'))
-b = float(input('B: ').replace(',', '.'))
-print(f'sum={a+b:.2f}; avg={(a+b)/2:.2f}')
-```
-![Картинка 1](./ex02.png)
+def is_rectangular(mat: list[list]) -> bool:
+    if not mat:
+        return True
+    rectangle_length = len(mat[0])
+    for i in mat:
+        if len(i) != rectangle_length:
+            return False
+    return True
 
-### Задание 3
+
+
+def transpose(mat: list[list[float | int]]) -> list[list]:
+    res = []
+    if not is_rectangular(mat):
+        raise ValueError
+    if not mat:
+        return mat
+    for i in range(len(mat[0])):
+        prog = []
+        for j in range(len(mat)):
+            prog.append(mat[j][i])
+        res.append(prog)
+    
+    return res
+
+def row_sums(mat: list[list[float | int]]) -> list[float]:
+    res = []
+    if not is_rectangular(mat):
+        raise ValueError
+    for i in mat:
+        res.append(sum(i))
+    return res
+
+def col_sums(mat: list[list[float | int]]) -> list[float]:
+    res = []
+    mat = transpose(mat)
+    if not is_rectangular(mat):
+        raise ValueError
+    for i in mat:
+        res.append(sum(i))
+    return res
+```
+![Картинка 1](./matrix.png)
+
+### Задание C
 ```python
-price = int(input('Цена: '))
-discount = float(input('Скидка: '))
-vat = float(input('VAT: '))
+def format_record(rec: tuple[str, str, float]) -> str:
+    fio = rec[0]
+    group = rec[1]
+    gpa = rec[2]
 
-base = price * (1 - discount/100)
-vat_amount = base * (vat/100)
-total = base + vat_amount
-
-print(f'База после скидки: {base:.02f} ₽ \nНДС:               {vat_amount:.02f} ₽\nИтого к оплате:    {base + vat_amount:.02f} ₽')
+    if fio == "":
+        raise ValueError
+    if group == "":
+        raise ValueError
+    if type(gpa) != float:
+        raise TypeError
+    
+    fio = fio.split()
+    if len(fio) == 3:
+        fio[0] = fio[0][0].upper() + fio[0][1:] 
+        fio[1] = fio[1][0].upper() + '.'
+        fio[2] = fio[2][0].upper() + '.'
+        fio = " ".join(fio)
+    else:
+        fio[0] = fio[0][0].upper() + fio[0][1:] 
+        fio[1] = fio[1][0].upper() + '.'
+        fio = " ".join(fio)
+    group = 'гр. ' + group
+    gpa = "GPA " + str(round(gpa, 2)) + '0'
+    return(f'{fio}, {group}, {gpa}')
 ```
-![Картинка 1](./ex03.png)
-
-### Задание 4
-```python
-time = int(input("Минуты: "))
-print(f'{(time//60)}:{(time%60):02d}')
-```
-![Картинка 1](./ex04.png)
-
-### Задание 5
-```python
-import re
-
-def get_initials(name):
-    words = name.split()
-    initials = ""
-    for word in words:
-        if word:
-            initials += word[0].upper()
-    return initials
-
-name = str(input('ФИО: '))
-name = re.sub(r'\s+', ' ', name).strip()
-print(f'Инициалы: {get_initials(name)}.')
-print(f'Длина: {len(name)}')
-
-```
-![Картинка 1](./ex05.png)
-
+![Картинка 1](./tuples.png)
