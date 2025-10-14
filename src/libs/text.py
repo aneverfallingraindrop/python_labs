@@ -23,7 +23,4 @@ def count_freq(tokens: list[str]) -> dict[str, int]:
     return(dict(Counter(tokens)))
 
 def top_n(freq: dict[str, int], n: int) -> list[tuple[str, int]]:
-    return sorted(Counter(freq).items())[0:n]
-
-stroka = (["a","b","a","c","b","a"])
-print(top_n(stroka, n=2))
+    return sorted(Counter(freq).items(), reverse=True)
