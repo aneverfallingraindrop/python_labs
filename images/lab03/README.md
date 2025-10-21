@@ -22,7 +22,6 @@ assert normalize("ПрИвЕт\nМИр\t") == "привет мир"
 assert normalize("ёжик, Ёлка") == "ежик, елка"
 ```
 ![Картинка 1](./normalize.png)
-![Картинка 2](./normalize2.png)
 
 ### Задание Tokenize
 ```python
@@ -33,7 +32,6 @@ assert tokenize("по-настоящему круто") == ["по-настоящ
 assert tokenize("2025 год") == ["2025", "год"]
 ```
 ![Картинка 1](./tokenize.png)
-![Картинка 2](./tokenize2.png)
 
 ### Задание count_freq + top_n
 ```python
@@ -60,9 +58,17 @@ def top_n(dict, n_top):
         for i in range(n_top):
             res.append(ans[i])
     return res
+
+# count_freq + top_n
+freq = count_freq(["a","b","a","c","b","a"])
+assert freq == {"a":3, "b":2, "c":1}
+assert top_n(freq, 2) == [("a",3), ("b",2)]
+
+# тай-брейк по слову при равной частоте
+freq2 = count_freq(["bb","aa","bb","aa","cc"])
+assert top_n(freq2, 2) == [("aa",2), ("bb",2)]
 ```
 ![Картинка 1](./count_freq_top_n.png)
-![Картинка 2](./count_freq_top_n2.png)
 
 ### Задание text_stats
 ```python
@@ -87,4 +93,3 @@ for x, y in top:
     print(f"{x}{" " * (leng - len(x) + 1)}| {y}") 
 ```
 ![Картинка 1](./text_stats.png)
-![Картинка 2](./text_stats2.png)
