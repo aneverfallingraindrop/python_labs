@@ -93,3 +93,4 @@ for x, y in top:
     print(f"{x}{" " * (leng - len(x) + 1)}| {y}") 
 ```
 ![Картинка 1](./text_stats.png)
+![Картинка 1](./text_stats2.png)
