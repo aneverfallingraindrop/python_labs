@@ -19,7 +19,7 @@ with open(path_in, mode="r", newline='', encoding='utf-8') as f:
     words = []
     for item in txt:
         words.append(item)
-    write_csv(words, "././data/lab04/report.csv", ("word", "count"))
+    write_csv(words, "././data/lab04/report", ("word", "count"))
     print(f"Всего слов: {len(string.split())}")
     print(f"Уникальных слов: {len(txt)}")
     print('Топ-5:')

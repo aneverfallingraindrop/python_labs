@@ -12,6 +12,7 @@ def read_text(path: str | Path, encoding: str = "utf-8") -> str:
 
 def write_csv(rows: Iterable[Sequence], path: str | Path,
               header: tuple[str, ...] | None = None) -> None:
+    path += '.csv'
     if (not rows):
         file = Path(path).open("w", newline="", encoding="utf-8")
         if header == None:
@@ -27,3 +28,4 @@ def write_csv(rows: Iterable[Sequence], path: str | Path,
                 write.writerow(header)
             for r in rows: 
                 write.writerow(r)
+
