@@ -8,7 +8,6 @@ def is_rectangular(mat: list[list]) -> bool:
     return True
 
 
-
 def transpose(mat: list[list[float | int]]) -> list[list]:
     res = []
     if not is_rectangular(mat):
@@ -20,8 +19,9 @@ def transpose(mat: list[list[float | int]]) -> list[list]:
         for j in range(len(mat)):
             prog.append(mat[j][i])
         res.append(prog)
-    
+
     return res
+
 
 def row_sums(mat: list[list[float | int]]) -> list[float]:
     res = []
@@ -31,6 +31,7 @@ def row_sums(mat: list[list[float | int]]) -> list[float]:
         res.append(sum(i))
     return res
 
+
 def col_sums(mat: list[list[float | int]]) -> list[float]:
     res = []
     mat = transpose(mat)
@@ -39,6 +40,7 @@ def col_sums(mat: list[list[float | int]]) -> list[float]:
     for i in mat:
         res.append(sum(i))
     return res
+
 
 print("transpose test cases")
 print(transpose([[1, 2, 3]]))
