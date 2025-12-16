@@ -8,7 +8,7 @@ project_root = os.path.dirname(
 sys.path.insert(0, project_root)
 from src.lab05.json_csv import *
 from src.lab05.csv_xlxs import *
-
+ 
 
 def main():
     parser = argparse.ArgumentParser(description="data converters")
@@ -36,7 +36,6 @@ def main():
 
     elif args.cmd == "csv_xlsx":
         answer = csv_to_xlsx(args.input, args.output)
-
 
 d = main()
 

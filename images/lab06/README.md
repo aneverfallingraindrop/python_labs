@@ -39,7 +39,7 @@ def main():
                 for row in reader:
                     print(f"{counts} {row}")
                     counts += 1
-            else: # Если не нумируем строки
+            else: 
                 for row in reader:
                     print(row)
 
